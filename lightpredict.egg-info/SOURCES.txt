@@ -1,0 +1,8 @@
+LICENSE.txt
+setup.py
+lightpredict/__init__.py
+lightpredict.egg-info/PKG-INFO
+lightpredict.egg-info/SOURCES.txt
+lightpredict.egg-info/dependency_links.txt
+lightpredict.egg-info/requires.txt
+lightpredict.egg-info/top_level.txt

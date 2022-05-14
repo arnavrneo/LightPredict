@@ -1,0 +1,14 @@
+Metadata-Version: 2.1
+Name: lightpredict
+Version: 0.5
+Summary: Test 1
+Home-page: https://github.com/arnavrneo/LightPredict
+Author: Arnav Raina
+Author-email: arnavr.neo@gmail.com
+License: UNKNOWN
+Keywords: machine learning,scikit learn,sklearn,ai,optuna,hyperparameters
+Platform: UNKNOWN
+License-File: LICENSE.txt
+
+This is a very very long description
+
