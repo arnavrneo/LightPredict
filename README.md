@@ -16,7 +16,7 @@ pip install lightpredict
 import lazypredict
 ```
 
-### Classification
+## Classification
 Example
 
 ```
@@ -80,9 +80,9 @@ Plot
 
 ![Results](https://github.com/arnavrneo/LightPredict/blob/master/img/result.png)
 
-#### Roc-Auc Curves
+### Roc-Auc Curves
 
-LazyClassifier can also plot the roc_auc curves directly. To plot them, use the following code:
+LightClassifier can also plot the roc_auc curves directly. To plot them, use the following code:
 ```
 lcf.roc_auc_curves(X_train,X_test,y_train,y_test)
 ```
@@ -90,3 +90,45 @@ lcf.roc_auc_curves(X_train,X_test,y_train,y_test)
 Plot
 
 ![Curve](https://github.com/arnavrneo/LightPredict/blob/master/img/roc_auc.png)
+
+### Optimization (using Optuna)
+LightClassifier can also be used to tune for hyper-parameter tuning. It automatically tunes the hyper-parameters using Optuna and displays the best score of each model along with their best parameters. Optimization & Parameters importance plots can also be automatically generated using it. To do optimization, simply call:
+
+```
+lcf.optimize(X_train,X_test,y_train,y_test,trials=2) # Here, trials means no. of iterations and passing plot=True plot the graphs also.
+
+ Optimizing models...
+╔═══════════════════════════════════════════════════════════════════════════════════════════╗
+║                                 Optimized Models & Scores                                 ║
+╚═══════════════════════════════════════════════════════════════════════════════════════════╝
+
+┏━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃       Model       ┃ Best Score ┃ Best Params                                              ┃
+┡━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┩
+│     AdaBoost      │   0.972    │ {'n_estimators': 22, 'learning_rate':                    │
+│                   │            │ 0.7865771576419738}                                      │
+├───────────────────┼────────────┼──────────────────────────────────────────────────────────┤
+│ BaggingClassifier │   0.979    │ {'n_estimators': 34, 'max_samples': 82}                  │
+├───────────────────┼────────────┼──────────────────────────────────────────────────────────┤
+│   Decision Tree   │   0.951    │ {'max_depth': 6, 'min_samples_split': 14,                │
+│                   │            │ 'min_weight_fraction_leaf': 0.0359737959130258,          │
+│                   │            │ 'min_samples_leaf': 10}                                  │
+├───────────────────┼────────────┼──────────────────────────────────────────────────────────┤
+│    Extra Trees    │   0.944    │ {'max_depth': 3}                                         │
+├───────────────────┼────────────┼──────────────────────────────────────────────────────────┤
+│    KNeighbors     │   0.947    │ {'n_neighbors': 10}                                      │
+├───────────────────┼────────────┼──────────────────────────────────────────────────────────┤
+│   RandomForest    │   0.972    │ {'max_depth': 4, 'n_estimators': 128,                    │
+│                   │            │ 'min_samples_leaf': 1}                                   │
+├───────────────────┼────────────┼──────────────────────────────────────────────────────────┤
+│   XGBClassifier   │   0.982    │ {'max_depth': 6, 'n_estimators': 101, 'learning_rate':   │
+│                   │            │ 0.5412564423401603, 'gamma': 0.20344958660655896,        │
+│                   │            │ 'subsample': 0.5885059262168062}                         │
+├───────────────────┼────────────┼──────────────────────────────────────────────────────────┤
+│     LightGBM      │   0.972    │ {'lambda_l1': 0.07859371738975324, 'lambda_l2':          │
+│                   │            │ 4.299498906836946, 'num_leaves': 100,                    │
+│                   │            │ 'feature_fraction': 0.9307795680365831,                  │
+│                   │            │ 'bagging_fraction': 0.5941966727501499, 'bagging_freq':  │
+│                   │            │ 7, 'min_child_samples': 39}                              │
+└───────────────────┴────────────┴──────────────────────────────────────────────────────────┘
+```
