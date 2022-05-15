@@ -74,4 +74,19 @@ lcf.fit(X_train,X_test,y_train,y_test,rounds=5,plot=True)  # if plot=True, a plo
 ├────────────────────┼────────────────┼──────────┼─────────┼─────────────────┼──────────────┤
 │      Lightgbm      │    0.97193     │ 0.97802  │ 0.98826 │     0.97802     │   0.97802    │
 └────────────────────┴────────────────┴──────────┴─────────┴─────────────────┴──────────────┘
+
 ```
+Plot
+
+![Results](https://github.com/arnavrneo/LightPredict/blob/master/img/result.png)
+
+#### Roc-Auc Curves
+
+LazyClassifier can also plot the roc_auc curves directly. To plot them, use the following code:
+```
+lcf.roc_auc_curves(X_train,X_test,y_train,y_test)
+```
+
+Plot
+
+![Curve](https://github.com/arnavrneo/LightPredict/blob/master/img/roc_auc.png)
